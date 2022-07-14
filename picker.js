@@ -124,18 +124,28 @@ var SmartPicker = (function () {
       .done(function (data) {
         //=============temporary changes==============================================
         data.entry[0].resource.name = [
-          { family: "Sharma", given: ["A."], prefix: ["Mr."], use: "official" },
+          {
+            family: "Sharma",
+            given: ["Ankur"],
+            prefix: ["Mr."],
+            use: "official",
+          },
         ];
         data.entry[1].resource.name = [
           {
             family: "Agarwal",
-            given: ["B."],
+            given: ["Brijesh"],
             prefix: ["Mr."],
             use: "official",
           },
         ];
         data.entry[2].resource.name = [
-          { family: "Verma", given: ["C."], prefix: ["Mr."], use: "official" },
+          {
+            family: "Verma",
+            given: ["Chandan"],
+            prefix: ["Mr."],
+            use: "official",
+          },
         ];
         data.entry[3].resource.name = [
           {
@@ -148,13 +158,18 @@ var SmartPicker = (function () {
         data.entry[4].resource.name = [
           {
             family: "Ahuja",
-            given: ["Anu"],
-            prefix: ["Mrs."],
+            given: ["Anuj"],
+            prefix: ["Mr."],
             use: "official",
           },
         ];
         data.entry[5].resource.name = [
-          { family: "Patel", given: ["A."], prefix: ["Mr."], use: "official" },
+          {
+            family: "Patel",
+            given: ["Arati"],
+            prefix: ["Miss"],
+            use: "official",
+          },
         ];
         data.entry[6].resource.name = [
           {

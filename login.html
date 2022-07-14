@@ -238,20 +238,18 @@
 
       function renderPatients(entries) {
         //--------------temporary changes--------------------
+        entries = entries.slice(0, 4);
         entries[0].resource.name = [
-          { family: "Sharma", given: ["A."], prefix: ["Dr."] },
+          { family: "Sharma", given: ["Manju"], prefix: ["AshaUser-"] },
         ];
         entries[1].resource.name = [
-          { family: "Reddy", given: ["B."], prefix: ["Dr."] },
+          { family: "Shah", given: ["D."], prefix: ["ANMUser-"] },
         ];
         entries[2].resource.name = [
-          { family: "Verma", given: ["C."], prefix: ["Dr."] },
+          { family: "Dubey", given: ["Gaurav"], prefix: ["StateAdmin-"] },
         ];
         entries[3].resource.name = [
-          { family: "Agarwal", given: ["D."], prefix: ["Dr."] },
-        ];
-        entries[4].resource.name = [
-          { family: "Patil", given: ["E."], prefix: ["Dr."] },
+          { family: "Oberoi", given: ["S."], prefix: ["GlobalAdmin-"] },
         ];
         //--------------------------------------------------
         $.each(entries, function (i, entry) {
