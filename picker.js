@@ -158,16 +158,16 @@ var SmartPicker = (function () {
         data.entry[4].resource.name = [
           {
             family: "Ahuja",
-            given: ["Anuj"],
-            prefix: ["Mr."],
+            given: ["Anu"],
+            prefix: ["Miss"],
             use: "official",
           },
         ];
         data.entry[5].resource.name = [
           {
             family: "Patel",
-            given: ["Arati"],
-            prefix: ["Miss"],
+            given: ["Arun"],
+            prefix: ["Mr."],
             use: "official",
           },
         ];
