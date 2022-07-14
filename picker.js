@@ -120,73 +120,185 @@ var SmartPicker = (function () {
     }
     state.mode = "loading";
     render();
+    const male_array = [
+      {
+        family: "Sharma",
+        given: ["Ankur"],
+        prefix: ["Mr."],
+        use: "official",
+      },
+      {
+        family: "Verma",
+        given: ["Brijesh"],
+        prefix: ["Mr."],
+        use: "official",
+      },
+      {
+        family: "Agnihotri",
+        given: ["Akash"],
+        prefix: ["Mr."],
+        use: "official",
+      },
+      {
+        family: "Reddy",
+        given: ["Sagar"],
+        prefix: ["Mr."],
+        use: "official",
+      },
+      {
+        family: "Patil",
+        given: ["Avi"],
+        prefix: ["Mr."],
+        use: "official",
+      },
+      {
+        family: "Patel",
+        given: ["Ashish"],
+        prefix: ["Mr."],
+        use: "official",
+      },
+      {
+        family: "Shah",
+        given: ["Bhavesh"],
+        prefix: ["Mr."],
+        use: "official",
+      },
+      {
+        family: "Naik",
+        given: ["Ajit"],
+        prefix: ["Mr."],
+        use: "official",
+      },
+    ];
+    const female_array = [
+      {
+        family: "Sharma",
+        given: ["Ankita"],
+        prefix: ["Mrs."],
+        use: "official",
+      },
+      {
+        family: "Verma",
+        given: ["Payal"],
+        prefix: ["Mrs."],
+        use: "official",
+      },
+      {
+        family: "Yadav",
+        given: ["Prachi"],
+        prefix: ["Mrs."],
+        use: "official",
+      },
+      {
+        family: "Agase",
+        given: ["Shobha"],
+        prefix: ["Mrs."],
+        use: "official",
+      },
+      {
+        family: "Ahuja",
+        given: ["Anu"],
+        prefix: ["Mrs."],
+        use: "official",
+      },
+      {
+        family: "Agarwal",
+        given: ["Babita"],
+        prefix: ["Mrs."],
+        use: "official",
+      },
+      {
+        family: "Reddy",
+        given: ["Laxmi"],
+        prefix: ["Mrs."],
+        use: "official",
+      },
+      {
+        family: "Sony",
+        given: ["Amita"],
+        prefix: ["Mrs."],
+        use: "official",
+      },
+    ];
+    const miss_array = [
+      {
+        family: "Sony",
+        given: ["A."],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Patel",
+        given: ["Amita"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Kumari",
+        given: ["Amita"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Sony",
+        given: ["Shradha"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Shah",
+        given: ["Pranjal"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Das",
+        given: ["Vibha"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Rai",
+        given: ["Kamini"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Shetty",
+        given: ["Nalini"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Shetty",
+        given: ["Aarati"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+      {
+        family: "Shetty",
+        given: ["Ovi"],
+        prefix: ["Miss"],
+        use: "official",
+      },
+    ];
     $.get(fhirUrl)
       .done(function (data) {
         //=============temporary changes==============================================
-        data.entry[0].resource.name = [
-          {
-            family: "Sharma",
-            given: ["Ankur"],
-            prefix: ["Mr."],
-            use: "official",
-          },
-        ];
-        data.entry[1].resource.name = [
-          {
-            family: "Agarwal",
-            given: ["Brijesh"],
-            prefix: ["Mr."],
-            use: "official",
-          },
-        ];
-        data.entry[2].resource.name = [
-          {
-            family: "Verma",
-            given: ["Chandan"],
-            prefix: ["Mr."],
-            use: "official",
-          },
-        ];
-        data.entry[3].resource.name = [
-          {
-            family: "Patil",
-            given: ["Dipali"],
-            prefix: ["Mrs."],
-            use: "official",
-          },
-        ];
-        data.entry[4].resource.name = [
-          {
-            family: "Ahuja",
-            given: ["Anu"],
-            prefix: ["Miss"],
-            use: "official",
-          },
-        ];
-        data.entry[5].resource.name = [
-          {
-            family: "Patel",
-            given: ["Arun"],
-            prefix: ["Mr."],
-            use: "official",
-          },
-        ];
-        data.entry[6].resource.name = [
-          {
-            family: "Reddy",
-            given: ["Sheetal"],
-            prefix: ["Mrs."],
-            use: "official",
-          },
-        ];
-        data.entry[7].resource.name = [
-          {
-            family: "Verma",
-            given: ["Prachi"],
-            prefix: ["Mrs."],
-            use: "official",
-          },
-        ];
+        for (var i = 0; i < 9; i++) {
+          if (data.entry[i].resource.gender == "male") {
+            data.entry[i].resource.name = male_array[i];
+          } else {
+            const year_arr = data.entry[i].resource.birthDate.split("-");
+            const year = parseInt(year_arr[0]);
+            if (year > 2001) {
+              data.entry[i].resource.name = miss_array[i];
+            } else {
+              data.entry[i].resource.name = female_array[i];
+            }
+          }
+        }
+
         //===================================================================
         state.data = data;
         state.mode = "data";
